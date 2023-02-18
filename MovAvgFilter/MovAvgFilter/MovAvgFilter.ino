@@ -25,12 +25,12 @@ void loop() {
   
   Serial.print(distance);
   Serial.print(",");
-  Serial.print(MovAvgfilter(distance));
+  Serial.print(MovAvgFilter(distance));
   Serial.println();
 
 }
 
-float MovAvgfilter(float x){
+float MovAvgFilter(float x){
   float avg = prevAvg + (x - data[0]) / n;
   updateData(x);
   prevAvg = avg;
