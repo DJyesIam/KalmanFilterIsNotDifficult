@@ -1,7 +1,6 @@
 // Roll, Pitch 각도
 double prevPhi = 0;
 double prevTheta = 0;
-double dt = 0.01;  // 가속도센서 측정 간격
 
 // IMU 센서 관련 코드
 #include "Wire.h"

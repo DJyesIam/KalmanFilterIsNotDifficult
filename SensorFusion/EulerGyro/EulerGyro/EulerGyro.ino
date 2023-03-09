@@ -1,7 +1,7 @@
 // Roll, Pitch 각도
 double prevPhi = 0;
 double prevTheta = 0;
-double dt = 0.01;  // 자이로센서 측정 간격
+double dt = 0.02;  // 자이로센서 측정 간격
 
 // IMU 센서 관련 코드
 #include "Wire.h"
@@ -61,15 +61,14 @@ void loop() {
   Serial.print(prevPhi);
   Serial.print(",");
   Serial.println(prevTheta);
-  delay(10);
 }
 
 
 void EulerGyro(double gx, double gy, double gz){
-  double sinPhi = sin(prevPhi);
-  double cosPhi = cos(prevPhi);
-  double cosTheta = cos(prevTheta);
-  double tanTheta = tan(prevTheta);
+  double sinPhi = sin(prevPhi / 180 * PI);
+  double cosPhi = cos(prevPhi / 180 * PI);
+  double cosTheta = cos(prevTheta / 180 * PI);
+  double tanTheta = tan(prevTheta / 180 * PI);
 
   prevPhi = prevPhi + dt*(gx + gy*sinPhi*tanTheta + gz*cosPhi*tanTheta);
   prevTheta = prevTheta + dt*(gy*cosPhi - gz*sinPhi);
